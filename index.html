@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Love Calculator</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <!-- Your HTML code goes here -->
+      <div id="love-calculator">
+        <h1>Love Calculator</h1>
+      <form>
+        <label for="name1">Name 1:</label>
+        <input type="text" id="name1" name="name1">
+        <label for="name2">Name 2:</label>
+        <input type="text" id="name2" name="name2">
+        <button type="submit">Calculate Love</button>
+      </form>
+      
+      </div>
+  </body>
+</html>
+<div id="love-result"></div>
+
+<script>
+    document.querySelector("form").addEventListener("submit", function(event) {
+      event.preventDefault();
+      var name1 = document.querySelector("#name1").value.toLowerCase();
+      var name2 = document.querySelector("#name2").value.toLowerCase();
+      var loveScore = calculateLoveScore(name1, name2);
+      var result = document.createElement("p");
+      result.innerHTML = "Your love score is " + loveScore + "%!";
+      document.querySelector("#love-calculator").appendChild(result);
+    });
+  
+    function calculateLoveScore(name1, name2) {
+      var combinedName = name1 + name2;
+      var loveScore = 0;
+      for (var i = 0; i < combinedName.length; i++) {
+        loveScore += combinedName.charCodeAt(i);
+      }
+      loveScore = loveScore % 101;
+      return loveScore;
+    }
+  </script>
+  
+  
+  
+  
